@@ -1,0 +1,86 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block metadescription %}
+
+   {% if category %}
+      {{category.description|truncatewords:55}}
+   {% else %}
+
+     welcome to ABC store where you can buy everything..
+
+   {% endif %}
+{% endblock %}
+{% block title %}
+
+   {% if category %}
+      {{category.name}}- ABC store
+   {% else %}
+     See our new collections-ABC store
+   {% endif %}
+{% endblock %}
+{% block content %}
+{% if category %}
+<div>
+    <div class="row my_row_class">
+        <div class="mx-auto">
+        <p><a href="{% url 'ecommerceapp:allProdCat' %}">All product</a></p>
+            </div>
+    </div>
+</div>
+
+    {% endif %}
+    <div class="mx_auto">
+    {% if category %}
+
+    <img class="my_image" src="{{category.image.url}}" alt="{{category.name}}">
+
+</div>
+<br>
+<div>
+    <h1 class="text-center my_title">{{category.name}}</h1>
+    <p class="text-justify">{{category.description}}</p>
+</div>
+{% else %}
+
+<div>
+<img src="{% static 'img/baner.png' %}" alt="banner" width="100%">
+</div>
+<br>
+<div>
+    <h1 class="text-center text_title" style="color:pink">Our product collections</h1>
+    <p class="text-justify" style="font-family:young serif;"> A clothes shop or clothes store is any shop which sells items of ready-made clothing. A small shop which sells expensive or designer clothing may be called a boutique. A shop that sells clothes for a narrowly restricted market such as school uniforms or outdoor sports may be called an outfitter.</p>
+</div>
+{% endif %}
+</div>
+<div class="container">
+    <div class="row mx_auto">
+        {% for Product in products.object_list %}
+        <div class=" container my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4">
+        <div class="shadow card text-center" style="min-width:18rem;">
+            <a href="{{ Product.get_url }}"><img class="card-img-top my_image" style="width=200px; height:300px;" src="{{ Product.img.url }}" alt="{{Product.name}}"></a>
+
+<div class="card-body">
+            <h4>{{Product.name}}</h4>
+            <p>{{Product.price}}</p>
+    </div>
+
+<!--        <div>-->
+
+<!--            </div>-->
+        </div>
+            </div>
+        {% endfor %}
+    </div>
+<div class="mx_auto">
+    {% if products.paginator.num_pages > 1 %}
+
+</div>
+    <div class="text-center">
+        {% for pg in products.paginator.page_range %}
+        <a href="?page={{pg}}" class="btn btn-light btn-sm {% if products.number == pg %} active {% endif %}">{{pg}}</a>
+    {% endfor %}
+    </div>
+     {% endif %}
+</div>
+</div>
+{% endblock %}
