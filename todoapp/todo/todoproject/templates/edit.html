@@ -1,0 +1,9 @@
+{% extends 'base.html' %}
+{% block body %}
+<h4 style="text-align:center;color:blue;">Update details</h4>
+<form method="POST">
+  {%csrf_token%}
+  {{f.as_p}}
+  <button  type="submit">Update</button>
+</form>
+{% endblock %}

@@ -1,0 +1,129 @@
+{% extends 'base.html' %}
+{% block body %}
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="baner" >
+                <div class="baner-title">
+                    <h2>ToDo</h2>
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+<div class="container" >
+    <div class="row">
+
+        <div class="col-md-6" >
+            <form method="POST" class="p-3">
+                 {% csrf_token %}
+                <div class="shadow card">
+                    <div class="form-group">
+
+    <input type="text" class="form-control" name="task" placeholder="Add task">
+  </div>
+  <div class="form-group">
+      <div class="form-group">
+
+    <input type="date" class="form-control" name="date" placeholder="dd-mm-yyyy">
+  </div>
+
+    <input type="text" class="form-control" name="priority" placeholder="Add Priority">
+  </div>
+                        </div>
+                  <div class="form-group">
+                <input type="submit" class="btn btn-success">
+                   </div>
+
+            </form>
+
+
+        </div>
+<div class="col-md-6">
+    <h5>Task to be done</h5>
+              {% for i in task %}
+             <div class="shadow card" style="width: 18rem;background-color:lightgrey">
+
+  <div class="card-body">
+      <h5 class="card-title">{{i.name}}</h5>
+       <h6 class="card-date">{{i.date}}</h6>
+    <p class="card-text">{{i.priority}}</p>
+
+      <a class="btn btn-danger" href="{% url 'delete' i.id %}">Done</a>
+      <a class="btn btn-success" href="{% url 'update' i.id %}">Update</a>
+
+  </div>
+</div>
+             <br>
+ {% endfor %}
+
+         </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+    </div>
+                  </div>
+
+          </div>
+
+         </div>
+
+
+
+
+
+
+
+
+
+          </div>
+     </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!--            </form>-->
+<!--            <div class="col-md-6">-->
+<!--                 {% for i in task %}-->
+<!--                <div class=" shadow card">-->
+
+<!--                    <div class="card body">-->
+<!--                        <h5 class="card-title">Task Name:{{i.name}}</h5>-->
+
+<!--                        <p><b>{{i.priority}}</b></p>-->
+<!--                <a class="btn btn-danger" href:></a>-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--{% endfor %}-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+<!--</div>-->
+
+
+
+
+
+
+
+{% endblock %}
