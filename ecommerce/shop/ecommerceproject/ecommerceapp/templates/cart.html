@@ -6,16 +6,22 @@
  This is cart page.
 {% endblock %}
 {% block title %}
-Cart
+
 {% endblock %}
+
 {% block content %}
+<div>
+<img src="{% static 'img/baner.png' %}" alt="banner" width="100%">
+</div>
+
 {% if not cart_items %}
+
 <div>
   <div class="text-center">
     <br>
     <h1 class="text-center my_title">Your shopping cart is empty</h1>
     <br>
-   <p>Please click <a href="{% url 'ecommerceapp:allProdCat' %}" >to continue shopping</p></a>
+   <p>Please click to <a href="{% url 'ecommerceapp:allProdCat' %}" class="btn btn-success" > continue shopping</p></a>
   </div>
 </div>
 {% else %}
@@ -26,11 +32,12 @@ Cart
     <h1 class="text-center my_title" style="color:red"><b>Your shopping cart</b></h1>
     <br>
   </div>
-  <div class="row">
+
+  <div class="row mx-auto">
 
 <!-- <div class="mx_auto">-->
-    <div class="col-12 col-sm-12 col-md-12 col-lg-6">
-      <table  class="my_custom_table">
+    <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+      <table  class="table my_custom_table">
         <thead  class="my_custom_thead text-center">
         <tr>
           <th colspan="5">
@@ -43,7 +50,7 @@ Cart
         {% for cart_item in cart_items %}
         <tr>
           <td>
-            <a href="cart_item.Product.get_absolute_url"> <img src="{{cart_item.Product.img.url}}" style="width:100px;height:100px" class="float-left rounded custom_image"></a>
+            <a href="{{cart_item.Product.get_url}}"> <img src="{{cart_item.Product.img.url}}" style="width:100px;height:100px" class="float-left rounded custom_image"></a>
           </td>
           <td class="text-left">
                 <b>{{cart_item.Product.name}}</b>
@@ -79,36 +86,47 @@ Cart
     </div>
 
 
-
-<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
-  <table class="my_custom_table">
-        <thead class="my_custom_thead">
+  <div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">
+      <table  class="table my_custom_table">
+        <thead  class="my_custom_thead text-center">
         <tr>
-          <th class="text-center shadow-card">
-           check out
+          <th colspan="5">
+           Your Items
           </th>
         </tr>
 
-        </thead>
+<!--<div class="col-12 col-sm-12 col-md-12 col-lg-6 text-center">-->
+<!--  <table class="my_custom_table">-->
+<!--        <thead class="my_custom_thead">-->
+<!--        <tr>-->
+<!--          <th class="text-center shadow-card">-->
+<!--           check out-->
+<!--          </th>-->
+<!--        </tr>-->
+
+<!--        </thead>-->
         <tbody>
 
         <tr>
           <td><br>
-           Please review your shopping with us and continue shopping
+           Please review your shopping with us and continue shopping<br>
+              Your total is <strong>{{total}}</strong>
           </td>
 
-        </tr>
-        <tr>
+     </tr>
+       <tr>
           <td class="text-left">
-            Your total is <strong>{{total}}</strong>
+<!--            Your total is <strong>{{total}}</strong>-->
+               <a href=https://payments.google.com/ class="btn btn-success  my_custom_button text-center"> Make Payment</a>
+               <a href="{% url 'ecommerceapp:allProdCat' %}" class="btn btn-danger  my_custom_button text-center"> Continue Shopping</a>
           </td>
         </tr>
         </tbody>
       </table>
 
-  <div class="mx_auto text-center"><br>
-    <a href="{% url 'ecommerceapp:allProdCat' %}" class="btn btn-danger  my_custom_button text-center"> Continue Shopping</a>
-  </div>
+<!--  <div class=" text-center"><br>-->
+<!--    <a href="{% url 'ecommerceapp:allProdCat' %}" class="btn btn-danger  my_custom_button text-center"> Continue Shopping</a>-->
+<!--  </div>-->
 </div>
 
   {% endif %}

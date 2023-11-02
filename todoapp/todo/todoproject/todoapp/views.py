@@ -50,7 +50,7 @@ def delete(request,taskid):
 
 def update(request,id):
     task = Task.objects.get(id=id)
-    f=Todoform(request.POST or None,request.FILES,instance=task)
+    f=Todoform(request.POST or None,instance=task)
     if f.is_valid():
         f.save()
         return redirect('/')

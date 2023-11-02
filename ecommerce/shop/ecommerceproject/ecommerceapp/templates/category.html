@@ -20,13 +20,13 @@
 {% endblock %}
 {% block content %}
 {% if category %}
-<div>
-    <div class="row my_row_class">
-        <div class="mx-auto">
-        <p><a href="{% url 'ecommerceapp:allProdCat' %}">All product</a></p>
-            </div>
-    </div>
-</div>
+<!--<div>-->
+<!--    <div class="row my_row_class">-->
+<!--        <div class="mx-auto">-->
+<!--        <p><a href="{% url 'ecommerceapp:allProdCat' %}">All product</a></p>-->
+<!--            </div>-->
+<!--    </div>-->
+<!--</div>-->
 
     {% endif %}
     <div class="mx_auto">
@@ -57,7 +57,7 @@
         {% for Product in products.object_list %}
         <div class=" container my_bottom_margin col-9 col-sm-12 col-md-4 xol-lg-4">
         <div class="shadow card text-center" style="min-width:18rem;">
-            <a href="{{ Product.get_url }}"><img class="card-img-top my_image" style="width=200px; height:300px;" src="{{ Product.img.url }}" alt="{{Product.name}}"></a>
+            <a href="{{ Product.get_url }}"><img class="card-img-top my_image" style="width=200px  height=250px" src="{{ Product.img.url }}" alt="{{Product.name}}"></a>
 
 <div class="card-body">
             <h4>{{Product.name}}</h4>

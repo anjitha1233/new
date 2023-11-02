@@ -7,11 +7,13 @@ body{
 .my_footer p{
        padding-top:10px;
        font-size:14px;
+       color:blue;
        }
 
-.my_footer{
-background-color:lightgrey;
-height:30px;
+.my_footer div{
+         background-color:red;
+
+         padding-bottom:20px;
           }
 
 /***navabar***/
@@ -82,3 +84,17 @@ height:30px;
 padding-right:20px;
 color:red;
                 }
+
+
+.my_custom_table{
+      min-width:400px;
+      font-size:14px;}
+.my_custom_thead{
+        font-weight:16px;
+        text-transform:uppercase;
+        letter-spacing:.2em;
+        padding-top:15px;
+        padding-bottom:10px;
+        background-color:red;
+
+            }

@@ -1,12 +1,14 @@
 {% extends 'base.html' %}
 {% block body %}
-<form method="POST" enctype="multipart/form-data" >
+<form method="POST" enctype="multipart/form-data"  >
   {%csrf_token %}
   <input type="text" name="name" placeholder="Enter movie name"><br>
    <input type="text" name="desc" placeholder="Enter details"><br>
    <input type="text" name="year" placeholder="Enter year"><br>
    <input type="file" name="img" >
-  <input type="submit">
-    <a class="btn btn-primary" href="{% url 'movieapp:index' %}" >Home</a>
+  <input type="submit" class="btn btn-primary">
+<!--    <a class="btn btn-primary" href="{% url 'movieapp:index' %}" >Home</a>-->
+
+ <a class="btn btn-primary" href="{% url 'movieapp:index' %}">Home</a>
 </form>
 {% endblock %}
